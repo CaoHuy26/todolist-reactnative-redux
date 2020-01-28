@@ -1,7 +1,7 @@
 import React from 'react';
-import { StyleSheet, View, Text, TouchableOpacity } from 'react-native'
+import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
 
-export default class Todo extends React.Component {
+class Todo extends React.Component {
   constructor(props) {
     super(props)
   
@@ -39,4 +39,6 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     padding: 10
   }
-})
+});
+
+export default Todo;

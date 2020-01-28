@@ -1,20 +1,15 @@
 import React from 'react';
 import { View, TextInput, StyleSheet, TouchableOpacity, Image } from 'react-native';
+import { connect } from 'react-redux';
+import todoActions from '../actions/todoActions'
 
-export default class AddTodo extends React.Component {
+class AddTodo extends React.Component {
   constructor(props) {
     super(props)
   
     this.state = {
       newTodo: ''
     }
-  }
-  
-  _onPressButton = () => {
-    alert(this.state.newTodo);
-    this.setState({
-      newTodo: ''
-    })
   }
 
   render() {
@@ -28,7 +23,12 @@ export default class AddTodo extends React.Component {
         />
         <TouchableOpacity
           style={styles.buttonAdd}
-          onPress={this._onPressButton}
+          onPress={() => {
+            this.props.onClickAdd(this.state.newTodo);
+            this.setState({
+              newTodo: ''
+            })
+          }}
         >
           <Image
             source={require('../icons/icon-button-add.png')}
@@ -63,4 +63,12 @@ const styles = StyleSheet.create({
     width: 40,
     height: 40
   }
-})
+});
+
+const mapDispatchToProps = dispatch => {
+  return {
+    onClickAdd: newTodo => dispatch(todoActions.addNewTodo(newTodo))
+  }
+};
+
+export default connect(null, mapDispatchToProps)(AddTodo);
