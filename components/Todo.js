@@ -2,13 +2,6 @@ import React from 'react';
 import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
 
 class Todo extends React.Component {
-  constructor(props) {
-    super(props)
-  
-    this.state = {
-      isComplete: false
-    }
-  }
   
   render() {
     return (
@@ -17,9 +10,11 @@ class Todo extends React.Component {
         
         <TouchableOpacity
           style={{ marginLeft: 20 }}
-          onPress={() => this.setState({isComplete: !this.state.isComplete})}
+          onPress={() => {
+            return;
+          }}
         >
-         <Text>✓</Text>
+         <Text>{this.props.isComplete ? "✅" : null}</Text>
         </TouchableOpacity>
       </View>
     );

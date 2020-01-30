@@ -1,11 +1,33 @@
 import actionTypes from '../actions/types';
 
-const initialState = [];
+const initialState = [
+  {
+    id: 996,
+    todo: 'To do 1',
+    isComplete: false
+  },
+  {
+    id: 997,
+    todo: 'To do 2',
+    isComplete: true
+  },
+  {
+    id: 998,
+    todo: 'To do 3',
+    isComplete: false
+  }
+];
 
 const todoReducers = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.ADD_NEW_TODO:
-      return [...state, action.todo]
+      return [...state,
+        {
+          id: action.id,
+          todo: action.todo,
+          isComplete: false
+        }
+      ]
     default:
       return state;
   }
