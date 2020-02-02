@@ -27,7 +27,21 @@ const todoReducers = (state = initialState, action) => {
           todo: action.todo,
           isComplete: false
         }
-      ]
+      ];
+    
+    case actionTypes.TOOGLE_TODO:
+      return state.map(todo => {
+        if (todo.id === action.id) {
+          return {
+            ...todo,
+            isComplete: !todo.isComplete
+          }
+        }
+        else {
+          return todo;
+        }
+      })
+    
     default:
       return state;
   }

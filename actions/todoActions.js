@@ -9,6 +9,12 @@ const todoActions = {
       id: todoId++,
       todo: newTodo
     }
+  },
+  toggleTodo(id) {
+    return {
+      type: actionTypes.TOOGLE_TODO,
+      id
+    }
   }
 }
 
