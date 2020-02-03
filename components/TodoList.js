@@ -5,13 +5,12 @@ import Todo from './Todo';
 
 class TodoList extends React.Component {
   render() {
-    console.log(this.props)
     return (
       <View>
         <FlatList
           data={this.props.todos}
           renderItem={({item, index}) => <Todo {...item}/>}
-          keyExtractor={(item, index) => item.id}
+          keyExtractor={(item, index) => item.id.toString()}
         />
       </View>
     );
